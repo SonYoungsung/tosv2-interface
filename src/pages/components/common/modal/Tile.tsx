@@ -11,10 +11,11 @@ import question from "assets/icons/question.svg";
 import BasicTooltip from "common/tooltip";
 import useModal from "hooks/useModal";
 import GradientSpinner from "../GradientSpinner";
+import { ReactNode } from "react";
 
 function Tile(props: {
   title: string;
-  content: string | undefined;
+  content: string | ReactNode |undefined;
   symbol?: string;
   tooltip: string;
   isWarning?: boolean;

@@ -64,7 +64,7 @@ function AccountDrawer(props: HeaderProps) {
         setIsOpen(false);
       }}
     >
-      <DrawerOverlay zIndex={1001} className="modalOverlayDrawer"  bg={'none'}  />
+      <DrawerOverlay zIndex={1001} className="modalOverlayDrawer" bg={"none"} />
       <DrawerContent
         bg={colorMode === "dark" ? "#1f2128" : "white.0"}
         px={"23px"}
@@ -128,6 +128,13 @@ function AccountDrawer(props: HeaderProps) {
                     TOS
                   </Flex>
                 </Flex>
+                <SubmitButton
+                  name="Redeem"
+                  w={"76px"}
+                  h={"30px"}
+                  isRedeem={true}
+                  onClick={sendToStake}
+                ></SubmitButton>
                 <SubmitButton
                   name="Stake"
                   w={"90px"}

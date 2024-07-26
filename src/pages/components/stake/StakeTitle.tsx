@@ -48,14 +48,38 @@ function StakeTitle() {
           <Image src={ARROW_RIGHT} alt={"ARROW_RIGHT"}></Image>
         </Flex> */}
       </Flex>
-      <Flex fontSize={14}>
+      <Flex fontSize={14} columnGap={"12px"}>
+        <SubmitButton
+          name="Redeem"
+          w={smallerThan1040 ? "100%" : ""}
+          style={
+            smallerThan1040
+              ? {
+                  fontSize: 14,
+                  marginTop: "20px",
+                  marginBottom: "30px",
+                  fontWeight: 600,
+                }
+              : { fontSize: 14, fontWeight: 600 }
+          }
+          onClick={openModal}
+          iconLocation={"left"}
+          isDisabled={!account || txPending}
+          isLoading={txPending}
+          isRedeem={true}
+        ></SubmitButton>
         <SubmitButton
           name="Stake"
           w={smallerThan1040 ? "100%" : ""}
           style={
             smallerThan1040
-              ? { fontSize: 14, marginTop: "20px", marginBottom: "30px" }
-              : { fontSize: 14 }
+              ? {
+                  fontSize: 14,
+                  marginTop: "20px",
+                  marginBottom: "30px",
+                  fontWeight: 600,
+                }
+              : { fontSize: 14, fontWeight: 600 }
           }
           onClick={openModal}
           iconName={"Plus"}

@@ -11,8 +11,11 @@ import IBottomContent from "pages/components/common/modal/IBottomContent";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { IBottomContentProps } from "types/common/modal";
 
-function StakeModal_BottomContent(props: { fiveDaysLockup: boolean }) {
-  const { fiveDaysLockup } = props;
+function StakeModal_BottomContent(props: {
+  fiveDaysLockup: boolean;
+  isRedeem?: boolean;
+}) {
+  const { fiveDaysLockup, isRedeem } = props;
   const { bp700px } = useMediaView();
 
   const { inputValue, setResetValue, setValue } = useInput(
@@ -44,7 +47,18 @@ function StakeModal_BottomContent(props: { fiveDaysLockup: boolean }) {
     newBalanceTosValue,
   } = useStakeModaldata();
 
-  const contentList: IBottomContentProps[] = fiveDaysLockup
+  const contentList: IBottomContentProps[] = isRedeem
+    ? [
+        {
+          title: "You Burn",
+          content: "10.00 TOS",
+        },
+        {
+          title: "You Get",
+          content: "0.000731 ETH",
+        },
+      ]
+    : fiveDaysLockup
     ? [
         {
           title: "You Give",

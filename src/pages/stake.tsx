@@ -9,6 +9,7 @@ import TopCardContainer from "./components/common/card/TopCardContainer";
 import TipCard from "./components/common/tip/TipCard";
 import MultiUnstakeModal from "./components/stake/MultiUnstakeModal";
 import useMediaView from "hooks/useMediaView";
+import RedeemModal from "./components/stake/RedeemModal";
 
 const Stake = () => {
   const theme = useTheme();
@@ -34,6 +35,7 @@ const Stake = () => {
       <UpdateModal></UpdateModal>
       <UpdateModalAfterEndTime></UpdateModalAfterEndTime>
       <MultiUnstakeModal></MultiUnstakeModal>
+      <RedeemModal />
     </Flex>
   );
 };
