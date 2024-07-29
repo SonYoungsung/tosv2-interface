@@ -57,7 +57,7 @@ function StakeModal_BottomContent(props: {
         },
         {
           title: "You Get",
-          content: `${commafy(redeemValue)} ETH`,
+          content: `${commafy(redeemValue, 4)} ETH`,
         },
       ]
     : fiveDaysLockup

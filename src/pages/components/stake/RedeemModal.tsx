@@ -92,7 +92,7 @@ function RedeemModal() {
   const { stakeList, tosAllowance } = useUser();
 
   const [fiveDaysLockup, setFiveDaysLockup] = useState<boolean>(false);
-  const [isAllowance, setIsAllowance] = useState<boolean>(false);
+  const [isAllowance, setIsAllowance] = useState<boolean>(true);
   const [isApproving, setIsApproving] = useState<boolean>(false);
 
   const [smallerThan1024] = useMediaQuery("(max-width: 1024px)");
@@ -225,23 +225,23 @@ function RedeemModal() {
     }
   }, [TOS_CONTRACT, StakingV2Proxy, setTx]);
 
-  useEffect(() => {
-    if (tosAllowance) {
-      if (tosAllowance === 0) {
-        return setIsAllowance(false);
-      }
-      if (
-        inputValue.stake_modal_balance?.length <= 0 ||
-        inputValue.stake_modal_balance === undefined
-      ) {
-        return setIsAllowance(true);
-      }
-      if (tosAllowance >= Number(inputValue.stake_modal_balance)) {
-        return setIsAllowance(true);
-      }
-      return setIsAllowance(false);
-    }
-  }, [tosAllowance, inputValue.stake_modal_balance, isAllowance]);
+  // useEffect(() => {
+  //   if (tosAllowance) {
+  //     if (tosAllowance === 0) {
+  //       return setIsAllowance(false);
+  //     }
+  //     if (
+  //       inputValue.stake_modal_balance?.length <= 0 ||
+  //       inputValue.stake_modal_balance === undefined
+  //     ) {
+  //       return setIsAllowance(true);
+  //     }
+  //     if (tosAllowance >= Number(inputValue.stake_modal_balance)) {
+  //       return setIsAllowance(true);
+  //     }
+  //     return setIsAllowance(false);
+  //   }
+  // }, [tosAllowance, inputValue.stake_modal_balance, isAllowance]);
 
   useEffect(() => {
     if (userTOSBalance) {
@@ -314,7 +314,7 @@ function RedeemModal() {
                     content={
                       <Flex w={"300px"} justifyContent={"center"}>
                         <Text fontSize={24}>
-                          1 <span style={{ fontSize: 14 }}>tos</span> =
+                          1 <span style={{ fontSize: 14 }}>TOS</span> =
                           0.0000731 <span style={{ fontSize: 14 }}>ETH</span>
                         </Text>
                       </Flex>
