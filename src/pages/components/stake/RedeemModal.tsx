@@ -192,7 +192,6 @@ function RedeemModal() {
     if (TreasuryProxy_CONTRACT) {
       console.log("---claim()---");
       console.log(convertToWei(inputValue.stake_modal_balance));
-      console.log(TreasuryProxy_CONTRACT);
 
       const tx = await TreasuryProxy_CONTRACT.claim(
         convertToWei(inputValue.stake_modal_balance)
@@ -262,7 +261,11 @@ function RedeemModal() {
   }, [inputValue.stake_modal_balance, setBottomLoading]);
 
   return (
-    <Modal isOpen={selectedModal === 'stake_redeem_modal'} isCentered onClose={closeThisModal}>
+    <Modal
+      isOpen={selectedModal === "stake_redeem_modal"}
+      isCentered
+      onClose={closeThisModal}
+    >
       <ModalOverlay className="modalOverlayDrawer" bg={"none"} />
       <ModalContent
         bg={colorMode === "light" ? "white.100" : "#121318"}

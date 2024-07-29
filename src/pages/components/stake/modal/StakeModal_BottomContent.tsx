@@ -47,15 +47,17 @@ function StakeModal_BottomContent(props: {
     newBalanceTosValue,
   } = useStakeModaldata();
 
+  const redeemValue = Number(inputValue.stake_modal_balance) * 0.0000731;
+
   const contentList: IBottomContentProps[] = isRedeem
     ? [
         {
           title: "You Burn",
-          content: "10.00 TOS",
+          content: `${commafy(inputValue.stake_modal_balance)} TOS`,
         },
         {
           title: "You Get",
-          content: "0.000731 ETH",
+          content: `${commafy(redeemValue)} ETH`,
         },
       ]
     : fiveDaysLockup
