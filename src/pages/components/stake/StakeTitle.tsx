@@ -13,6 +13,7 @@ function StakeTitle() {
   const [radioValue, setRadioValue] = useState<"All" | "Bond" | "Stake">("All");
   const [smallerThan1040] = useMediaQuery("(max-width: 1040px)");
   const { openModal } = useModal("stake_stake_modal");
+  const { openModal: openRedeemModal } = useModal("stake_redeem_modal");
   const { colorMode } = useColorMode();
   const { userLTOSBalance, userSTOSBalance, userTOSBalance } = useUserBalance();
   const { account } = useWeb3React();
@@ -62,7 +63,7 @@ function StakeTitle() {
                 }
               : { fontSize: 14, fontWeight: 600 }
           }
-          onClick={openModal}
+          onClick={openRedeemModal}
           iconLocation={"left"}
           isDisabled={!account || txPending}
           isLoading={txPending}

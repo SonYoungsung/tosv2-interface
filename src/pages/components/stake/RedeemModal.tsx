@@ -85,7 +85,8 @@ function RedeemModal() {
     currentTosValue,
     newBalanceTosValue,
   } = useStakeModaldata();
-  const { StakingV2Proxy_CONTRACT, TOS_CONTRACT } = useCallContract();
+  const { StakingV2Proxy_CONTRACT, TOS_CONTRACT, TreasuryProxy_CONTRACT } =
+    useCallContract();
   const { StakingV2Proxy } = CONTRACT_ADDRESS;
   const { userTOSBalance } = useUserBalance();
   const { stakeList, tosAllowance } = useUser();
@@ -188,33 +189,20 @@ function RedeemModal() {
   const callStake = useCallback(async () => {
     //Mainnet_maxPeriod = 3years
     //Rinkeby_maxPeriod = 39312
-    if (StakingV2Proxy_CONTRACT) {
-      if (fiveDaysLockup) {
-        console.log("---stake()---");
-        console.log(inputValue.stake_modal_balance);
+    if (TreasuryProxy_CONTRACT) {
+      console.log("---claim()---");
+      console.log(convertToWei(inputValue.stake_modal_balance));
+      console.log(TreasuryProxy_CONTRACT);
 
-        const tx = await StakingV2Proxy_CONTRACT.stake(
-          convertToWei(inputValue.stake_modal_balance)
-        );
-        setTx(tx);
-        return closeThisModal();
-      }
-      const periodWeeks = inputValue.stake_modal_period + 1;
-      console.log("---stakeGetStos()---");
-      console.log(convertToWei(inputValue.stake_modal_balance), periodWeeks);
-
-      const tx = await StakingV2Proxy_CONTRACT.stakeGetStos(
-        convertToWei(inputValue.stake_modal_balance),
-        periodWeeks
+      const tx = await TreasuryProxy_CONTRACT.claim(
+        convertToWei(inputValue.stake_modal_balance)
       );
       setTx(tx);
       return closeThisModal();
     }
   }, [
     inputValue.stake_modal_balance,
-    inputValue.stake_modal_period,
-    StakingV2Proxy_CONTRACT,
-    fiveDaysLockup,
+    TreasuryProxy_CONTRACT,
     closeThisModal,
     setTx,
   ]);
@@ -257,13 +245,6 @@ function RedeemModal() {
   }, [tosAllowance, inputValue.stake_modal_balance, isAllowance]);
 
   useEffect(() => {
-    if (selectedModalData?.stakedType === "LTOS Staking") {
-      return setFiveDaysLockup(true);
-    }
-    return setFiveDaysLockup(false);
-  }, [selectedModalData]);
-
-  useEffect(() => {
     if (userTOSBalance) {
       setValue({
         ...inputValue,
@@ -281,7 +262,7 @@ function RedeemModal() {
   }, [inputValue.stake_modal_balance, setBottomLoading]);
 
   return (
-    <Modal isOpen={true} isCentered onClose={closeThisModal}>
+    <Modal isOpen={selectedModal === 'stake_redeem_modal'} isCentered onClose={closeThisModal}>
       <ModalOverlay className="modalOverlayDrawer" bg={"none"} />
       <ModalContent
         bg={colorMode === "light" ? "white.100" : "#121318"}
