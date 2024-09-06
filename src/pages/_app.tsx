@@ -23,6 +23,10 @@ import "css/modalOverlay.css";
 import "css/scrollbar.css";
 import CustomToast from "common/toast/CustomToast";
 
+/**
+ * test
+ */
+
 function MyApp({ Component, pageProps }: AppProps) {
   test();
   const { onOpen, isOpen: isModalOpen, onClose } = useDisclosure();
