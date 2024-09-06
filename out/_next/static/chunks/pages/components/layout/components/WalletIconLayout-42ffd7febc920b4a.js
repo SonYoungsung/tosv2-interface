@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[7622],{65242:function(n,o,u){(window.__NEXT_P=window.__NEXT_P||[]).push(["/components/layout/components/WalletIconLayout",function(){return u(94034)}])}},function(n){n.O(0,[9774,2888,179],(function(){return o=65242,n(n.s=o);var o}));var o=n.O();_N_E=o}]);
