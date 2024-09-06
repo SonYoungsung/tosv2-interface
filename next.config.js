@@ -6,6 +6,9 @@ const nextConfig = {
   },
   output: "export",
   basePath: "/tosv2-interface",
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = nextConfig;
