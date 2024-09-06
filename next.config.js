@@ -4,7 +4,7 @@ const nextConfig = {
   env: {
     MODE: process.env.NEXT_PUBLIC_MODE,
   },
-  output: "export",
+  // output: "export",
   basePath: "/tosv2-interface",
   images: {
     unoptimized: true,
