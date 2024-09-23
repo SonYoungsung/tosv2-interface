@@ -9,4 +9,10 @@ export type StakeModalType =
   | "stake_multiUnstake_modal"
   | "stake_updateAfterEndTime_modal";
 
-export type ModalType = GlobalType | BondModalType | StakeModalType;
+export type RedeemModalType = "stake_redeem_modal";
+
+export type ModalType =
+  | GlobalType
+  | BondModalType
+  | StakeModalType
+  | RedeemModalType;

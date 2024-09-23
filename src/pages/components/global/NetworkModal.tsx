@@ -28,9 +28,9 @@ const networkList = [
     tokenType: "ETH",
   },
   {
-    name: "Goerli",
-    chainId: 5,
-    chainIdHex: "0x5",
+    name: "Sepolia",
+    chainId: 11155111,
+    chainIdHex: "0xAA36A7",
     tokenType: "ETH",
   },
 ];
@@ -54,7 +54,7 @@ function NetworkModal() {
       isCentered
       onClose={() => closeModal()}
     >
-      <ModalOverlay className="modalOverlayDrawer"  bg={'none'}  />
+      <ModalOverlay className="modalOverlayDrawer" bg={"none"} />
       <ModalContent
         w={"360px"}
         h={"223px"}

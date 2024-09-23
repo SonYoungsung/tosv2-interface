@@ -20,6 +20,7 @@ type SubmitButtonProp = {
   onClick?: Function;
   iconName?: IconTypes;
   iconLocation?: string;
+  isRedeem?: boolean;
 };
 
 const getIcon = (iconName: IconTypes) => {
@@ -57,6 +58,7 @@ const SubmitButton: React.FC<SubmitButtonProp> = (props) => {
     onClick,
     iconName,
     iconLocation,
+    isRedeem,
   } = props;
   const theme = useTheme();
   const { colorMode } = useColorMode();
@@ -68,13 +70,33 @@ const SubmitButton: React.FC<SubmitButtonProp> = (props) => {
       isDisabled={isDisabled}
       isLoading={isLoading}
       _hover={{}}
-      _focus={{ backgroundColor: "#257eee" }}
-      fontSize={16}
+      _focus={{ backgroundColor: isRedeem ? "none" : "#257eee" }}
+      fontSize={12}
+      fontWeight={"normal"}
       spinner={<Spinner size={"md"}></Spinner>}
       {...theme.BUTTON_STYLE.submitButtonStyle(colorMode)}
-      bgColor={isDisabled ? colorMode==='dark'? "#1e1e24" :'#e9edf1': ""}
-      color={isDisabled ? colorMode==='dark'? "#5a5a5a" :'#a9a9b7': "#f1f1f1"}
-
+      bgColor={
+        isRedeem
+          ? colorMode === "dark"
+            ? "#1F2128"
+            : "#FAFBFC"
+          : isDisabled
+          ? colorMode === "dark"
+            ? "#1e1e24"
+            : "#e9edf1"
+          : ""
+      }
+      borderColor={isRedeem ? "#8a8a98" : ""}
+      borderWidth={isRedeem ? "1px" : ""}
+      color={
+        isRedeem && colorMode === "light"
+          ? "#07070c"
+          : isDisabled
+          ? colorMode === "dark"
+            ? "#5a5a5a"
+            : "#a9a9b7"
+          : "#f1f1f1"
+      }
       onClick={() => onClick && onClick()}
       {...style}
     >

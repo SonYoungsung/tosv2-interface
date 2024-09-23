@@ -76,7 +76,6 @@ function BondCardSection() {
         };
       });
 
-      console.log(dum);
       setCardList(dum);
     }
   }, [data, priceData]);
@@ -89,14 +88,13 @@ function BondCardSection() {
       justifyContent={isSmallerThan750 ? "center" : ""}
       flexWrap={"wrap"}
     >
-      {cardList?.map((cardData: BondCardProps, index) =>
-        index === cardList.length - 1 ? null : (
-          <BondCard
-            data={cardData}
-            key={cardData.bondCapacity + index}
-          ></BondCard>
-        )
-      )}
+      {cardList?.map((cardData: BondCardProps, index) => (
+        // index === cardList.length - 1 ? null :
+        <BondCard
+          data={cardData}
+          key={cardData.bondCapacity + index}
+        ></BondCard>
+      ))}
     </Flex>
   );
 }

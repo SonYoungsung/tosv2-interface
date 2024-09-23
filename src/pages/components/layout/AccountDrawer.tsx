@@ -48,11 +48,17 @@ function AccountDrawer(props: HeaderProps) {
   const { colorMode } = useColorMode();
   const router = useRouter();
   const { openModal } = useModal("stake_stake_modal");
+  const { openModal: openRedeemModal } = useModal("stake_redeem_modal");
   const { account, connector, activate, active, error, deactivate } =
     useWeb3React();
   const sendToStake = () => {
     router.push("/stake");
     openModal();
+    setIsOpen(false);
+  };
+  const sendToRedeem = () => {
+    router.push("/stake");
+    openRedeemModal();
     setIsOpen(false);
   };
 
@@ -64,7 +70,7 @@ function AccountDrawer(props: HeaderProps) {
         setIsOpen(false);
       }}
     >
-      <DrawerOverlay zIndex={1001} className="modalOverlayDrawer"  bg={'none'}  />
+      <DrawerOverlay zIndex={1001} className="modalOverlayDrawer" bg={"none"} />
       <DrawerContent
         bg={colorMode === "dark" ? "#1f2128" : "white.0"}
         px={"23px"}
@@ -128,6 +134,13 @@ function AccountDrawer(props: HeaderProps) {
                     TOS
                   </Flex>
                 </Flex>
+                <SubmitButton
+                  name="Redeem"
+                  w={"76px"}
+                  h={"30px"}
+                  isRedeem={true}
+                  onClick={sendToRedeem}
+                ></SubmitButton>
                 <SubmitButton
                   name="Stake"
                   w={"90px"}
