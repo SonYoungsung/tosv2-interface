@@ -1,7 +1,7 @@
 (() => {
 var exports = {};
 exports.id = 2888;
-exports.ids = [2888,768,1950,8806,6061,9908,8285,7622,7366,5129,1163,5480];
+exports.ids = [2888,768,1950,8806,9908,8285,1163,7622,5129,7366,6061,5480];
 exports.modules = {
 
 /***/ 3490:
@@ -1814,6 +1814,14 @@ module.exports = require("@web3-react/walletlink-connector");
 
 "use strict";
 module.exports = require("ethers");
+
+/***/ }),
+
+/***/ 2522:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("ethers/lib/utils");
 
 /***/ }),
 
